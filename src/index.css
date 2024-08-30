@@ -1,0 +1,288 @@
+@import-normalize;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.header__link {
+  padding: 3px;
+  background-color: #c5acac;
+  width: 110px;
+  height: 25px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #333;
+}
+
+.header__link.active {
+  color: white;
+}
+
+.plus {
+  font-size: 22px;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+  transition: background-color 0.3s ease;
+}
+
+.table-header .table-cell {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.table-row:hover .table-cell {
+  background-color: #f9f9f9;
+}
+
+.table-row:nth-child(even) .table-cell {
+  background-color: #f2f2f2;
+}
+.table-cell.sortable {
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.table-cell.sortable::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  font-size: 0.7em;
+  opacity: 0.7;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.table-cell.sortable.descending::after {
+  transform: rotate(180deg);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .table {
+    display: block;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .table-row {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .table-cell {
+    display: block;
+    padding: 8px 0;
+    border: none;
+  }
+
+  .table-cell::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+  }
+
+  .table-cell:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.table-footer {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.table-footer .table-cell {
+  text-align: right;
+}
+
+.table__backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 55;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.5s;
+}
+
+.table__modal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: absolute;
+  max-width: 375px;
+  width: 100%;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+
+.table__input {
+  max-width: 343px;
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  padding-left: 10px;
+}
+
+.apply {
+  width: 250px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.icon--left {
+  width: 4px;
+  height: 12px;
+  background-color: #2a2a2a;
+  transform: rotate(320deg);
+
+  position: absolute;
+}
+.icon--right {
+  width: 4px;
+  height: 12px;
+  background-color: #2a2a2a;
+  transform: rotate(40deg);
+  position: absolute;
+}
+
+.icon--wrapper {
+  right: 30px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #2a2a2a;
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+  margin: 10px auto 0;
+  cursor: pointer;
+}
+
+.input__wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.row-red {
+  color: red;
+}
+
+.row-orange {
+  color: orange;
+}
