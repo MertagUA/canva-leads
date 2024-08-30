@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     const fetchLeads = async () => {
       console.log(window.location.pathname);
-      if (window.location.pathname === "/canva-leads") {
+      if (window.location.pathname === "/canva-leads/") {
         const data = await getAllLeads();
         setData(data);
       } else {
