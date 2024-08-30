@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/canva-leads/static/css/main.ccdd3e30.css",
+    "main.js": "/canva-leads/static/js/main.ac9b6f18.js",
+    "index.html": "/canva-leads/index.html",
+    "main.ccdd3e30.css.map": "/canva-leads/static/css/main.ccdd3e30.css.map",
+    "main.ac9b6f18.js.map": "/canva-leads/static/js/main.ac9b6f18.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ccdd3e30.css",
+    "static/js/main.ac9b6f18.js"
+  ]
+}
