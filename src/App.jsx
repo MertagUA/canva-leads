@@ -165,7 +165,7 @@ function App() {
                 <div className="table-cell">
                   {data ? data[data?.length - 1]?.number : 0} лідів
                 </div>
-                <DownloadButton state={true} />
+                <DownloadButton state={false} />
               </div>
               <div className="table">
                 <div className="table-row table-header">
@@ -694,7 +694,7 @@ function App() {
                   Загальна кількість
                 </div>
                 <div className="table-cell">{data ? data.length : 0} лідів</div>{" "}
-                <DownloadButton state={false} />
+                <DownloadButton state={true} />
               </div>
               <div className="table">
                 <div className="table-row table-header">
