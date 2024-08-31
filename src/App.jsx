@@ -29,13 +29,10 @@ function App() {
     const fetchLeads = async () => {
       if (window.location.pathname === "/canva-leads/") {
         const data = await getAllLeads();
-        console.log("he1");
         setData(data);
       } else {
-        console.log("here");
         const data = await getLeads(true);
         setData(data);
-        console.log(data);
       }
     };
 
