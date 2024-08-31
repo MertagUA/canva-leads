@@ -7,6 +7,7 @@ import {
   getLeads,
   updateLeads,
 } from "./services/axios";
+import DownloadButton from "./Download/Download";
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,21 +23,40 @@ function App() {
   const [email, setEmail] = useState("");
   const [bank, setBank] = useState("");
   const [price, setPrice] = useState([0]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchLeads = async () => {
-      console.log(window.location.pathname);
       if (window.location.pathname === "/canva-leads/") {
         const data = await getAllLeads();
+        console.log("he1");
         setData(data);
       } else {
+        console.log("here");
         const data = await getLeads(true);
         setData(data);
+        console.log(data);
       }
     };
 
     fetchLeads();
   }, []);
+
+  useEffect(() => {
+    if (refresh) {
+      const fetchLeads = async () => {
+        if (window.location.pathname === "/canva-leads/") {
+          const data = await getAllLeads();
+          setData(data);
+        } else {
+          const data = await getLeads(true);
+          setData(data);
+        }
+      };
+
+      fetchLeads();
+    }
+  }, [refresh]);
 
   const totalPrice = () => {
     let total = 0;
@@ -142,6 +162,13 @@ function App() {
                   Загальна сума
                 </div>
                 <div className="table-cell">{totalPrice()} грн</div>
+                <div className="table-cell" colSpan="8">
+                  Загальна кількість
+                </div>
+                <div className="table-cell">
+                  {data ? data[data?.length - 1]?.number : 0} лідів
+                </div>
+                <DownloadButton state={true} />
               </div>
               <div className="table">
                 <div className="table-row table-header">
@@ -216,7 +243,7 @@ function App() {
                       <div className="icon--right"></div>
                       <div className="icon--left"></div>
                     </div>
-                    <p className="label" style={{ marginBottom: "-10px" }}>
+                    {/* <p className="label" style={{ marginBottom: "-10px" }}>
                       Номер формат - 1
                     </p>
                     <input
@@ -229,7 +256,7 @@ function App() {
                           return { ...prev, number: e.target.value };
                         });
                       }}
-                    />
+                    /> */}
                     <p className="label" style={{ marginBottom: "-10px" }}>
                       Дата початку підписки формат - 2024-08-19
                     </p>
@@ -474,7 +501,7 @@ function App() {
                       <div className="icon--right"></div>
                       <div className="icon--left"></div>
                     </div>
-                    <p className="label" style={{ marginBottom: "-10px" }}>
+                    {/* <p className="label" style={{ marginBottom: "-10px" }}>
                       Номер формат - 1
                     </p>
                     <input
@@ -485,7 +512,7 @@ function App() {
                       onChange={(e) => {
                         setNumber(e.target.value);
                       }}
-                    />
+                    /> */}
                     <p className="label" style={{ marginBottom: "-10px" }}>
                       Дата початку підписки формат - 2024-08-19
                     </p>
@@ -608,9 +635,9 @@ function App() {
                     <button
                       type="button"
                       className="apply"
-                      onClick={() => {
+                      onClick={async () => {
                         if (
-                          number &&
+                          // number &&
                           startDate &&
                           duration &&
                           nickname &&
@@ -619,8 +646,9 @@ function App() {
                           bank &&
                           price
                         ) {
+                          const data = await getAllLeads();
                           createLeads({
-                            number,
+                            number: data ? data?.length + 1 : 1,
                             startDate,
                             endDate: calculateEndDate(startDate, +duration),
                             duration,
@@ -640,6 +668,9 @@ function App() {
                           setBank("");
                           setPrice([0]);
                           setModalOpen(false);
+                          setTimeout(() => {
+                            setRefresh(true);
+                          }, 1500);
                         } else {
                           alert("Усі поля мають бути заповненими!");
                         }
@@ -662,6 +693,11 @@ function App() {
                   Загальна сума
                 </div>
                 <div className="table-cell">{totalPrice()} грн</div>
+                <div className="table-cell" colSpan="8">
+                  Загальна кількість
+                </div>
+                <div className="table-cell">{data ? data.length : 0} лідів</div>{" "}
+                <DownloadButton state={false} />
               </div>
               <div className="table">
                 <div className="table-row table-header">
