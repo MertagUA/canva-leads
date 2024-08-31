@@ -2,7 +2,7 @@ import React from "react";
 
 const DownloadButton = ({ state }) => {
   const downloadExcel = () => {
-    fetch(`http://localhost:5050/api/canva/download-excel?state=${state}`)
+    fetch(`https://princesss.store/api/canva/download-excel?state=${state}`)
       .then((response) => {
         if (response.ok) {
           return response.blob();
