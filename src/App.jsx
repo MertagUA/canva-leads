@@ -690,7 +690,9 @@ function App() {
                 <div className="table-cell" colSpan="8">
                   Загальна кількість
                 </div>
-                <div className="table-cell">{totalCustomers} лідів</div>{" "}
+                <div className="table-cell">
+                  {data.filter(({ state }) => state === true).length} лідів
+                </div>{" "}
                 <DownloadButton state={true} />
               </div>
               <div className="table">
