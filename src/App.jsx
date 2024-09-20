@@ -168,9 +168,7 @@ function App() {
                 <div className="table-cell" colSpan="8">
                   Загальна кількість
                 </div>
-                <div className="table-cell">
-                  {data ? data[data?.length - 1]?.number : 0} лідів
-                </div>
+                <div className="table-cell">{data ? data.length : 0} лідів</div>
                 <DownloadButton state={false} />
               </div>
               <div className="table">
