@@ -24,6 +24,7 @@ function App() {
   const [bank, setBank] = useState("");
   const [price, setPrice] = useState([0]);
   const [refresh, setRefresh] = useState(false);
+  const [totalCustomers, setTotalCustomers] = useState(0);
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -33,9 +34,11 @@ function App() {
       ) {
         const data = await getAllLeads();
         setData(data);
+        setTotalCustomers(data.length);
       } else {
         const data = await getLeads(true);
         setData(data);
+        setTotalCustomers(data.length);
       }
     };
 
@@ -51,9 +54,11 @@ function App() {
         ) {
           const data = await getAllLeads();
           setData(data);
+          setTotalCustomers(data.length);
         } else {
           const data = await getLeads(true);
           setData(data);
+          setTotalCustomers(data.length);
         }
       };
 
@@ -168,7 +173,7 @@ function App() {
                 <div className="table-cell" colSpan="8">
                   Загальна кількість
                 </div>
-                <div className="table-cell">{data ? data.length : 0} лідів</div>
+                <div className="table-cell">{totalCustomers} лідів</div>
                 <DownloadButton state={false} />
               </div>
               <div className="table">
@@ -683,7 +688,7 @@ function App() {
                 <div className="table-cell" colSpan="8">
                   Загальна кількість
                 </div>
-                <div className="table-cell">{data ? data.length : 0} лідів</div>{" "}
+                <div className="table-cell">{totalCustomers} лідів</div>{" "}
                 <DownloadButton state={true} />
               </div>
               <div className="table">
