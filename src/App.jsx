@@ -27,7 +27,10 @@ function App() {
 
   useEffect(() => {
     const fetchLeads = async () => {
-      if (window.location.pathname === "/canva-leads/") {
+      if (
+        window.location.pathname === "/canva-leads/" ||
+        window.location.pathname === "/canva-leads"
+      ) {
         const data = await getAllLeads();
         setData(data);
       } else {
@@ -42,7 +45,10 @@ function App() {
   useEffect(() => {
     if (refresh) {
       const fetchLeads = async () => {
-        if (window.location.pathname === "/canva-leads/") {
+        if (
+          window.location.pathname === "/canva-leads/" ||
+          window.location.pathname === "/canva-leads"
+        ) {
           const data = await getAllLeads();
           setData(data);
         } else {
@@ -744,7 +750,11 @@ function App() {
                         <div className="table-cell">{item.tgName}</div>
                         <div className="table-cell">{item.email}</div>
                         <div className="table-cell">{item.bank}</div>
-                        <div className="table-cell">{item.price}</div>
+                        <div className="table-cell">
+                          <div className="table-cell">
+                            {allMoney(item.price)}
+                          </div>
+                        </div>
                         <div className="table-cell">
                           {item.state ? "Підписаний" : "Відписався"}
                         </div>
