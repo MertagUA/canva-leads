@@ -244,20 +244,6 @@ function App() {
                       <div className="icon--right"></div>
                       <div className="icon--left"></div>
                     </div>
-                    {/* <p className="label" style={{ marginBottom: "-10px" }}>
-                      Номер формат - 1
-                    </p>
-                    <input
-                      type="text"
-                      className="table__input"
-                      value={selectedItem.number}
-                      placeholder="1"
-                      onChange={(e) => {
-                        setSelectedItem((prev) => {
-                          return { ...prev, number: e.target.value };
-                        });
-                      }}
-                    /> */}
                     <p className="label" style={{ marginBottom: "-10px" }}>
                       Дата початку підписки формат - 2024-08-19
                     </p>
