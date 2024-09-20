@@ -38,7 +38,8 @@ function App() {
       } else {
         const data = await getLeads(true);
         setData(data);
-        setTotalCustomers(data.length);
+        const arr = data.filter(({ state }) => state === true);
+        setTotalCustomers(arr.length);
       }
     };
 
@@ -58,7 +59,8 @@ function App() {
         } else {
           const data = await getLeads(true);
           setData(data);
-          setTotalCustomers(data.length);
+          const arr = data.filter(({ state }) => state === true);
+          setTotalCustomers(arr.length);
         }
       };
 
