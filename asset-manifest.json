@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/canva-leads/static/css/main.261bbb34.css",
-    "main.js": "/canva-leads/static/js/main.12a16014.js",
+    "main.js": "/canva-leads/static/js/main.e6b6cff9.js",
     "index.html": "/canva-leads/index.html",
     "main.261bbb34.css.map": "/canva-leads/static/css/main.261bbb34.css.map",
-    "main.12a16014.js.map": "/canva-leads/static/js/main.12a16014.js.map"
+    "main.e6b6cff9.js.map": "/canva-leads/static/js/main.e6b6cff9.js.map"
   },
   "entrypoints": [
     "static/css/main.261bbb34.css",
-    "static/js/main.12a16014.js"
+    "static/js/main.e6b6cff9.js"
   ]
 }
