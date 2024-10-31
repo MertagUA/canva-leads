@@ -213,7 +213,9 @@ function App() {
                       setSelectedItem(item);
                       setModalEditOpen(true);
                     }}
-                    className={`table-row ${getRowStyle(item.endDate)}`}
+                    className={`table-row ${
+                      item.state ? getRowStyle(item.endDate) : ""
+                    }`}
                     key={index}
                   >
                     <div className="table-cell">{item.number}</div>
